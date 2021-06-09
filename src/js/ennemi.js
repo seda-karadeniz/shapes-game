@@ -1,3 +1,4 @@
+import circle from "./circle";
 
 const ennemi = {
     game: null,
@@ -14,8 +15,6 @@ const ennemi = {
 
     init(game){
         this.game = game;
-        //this.y = this.height;
-        //this.x = this.game.canvas.width - this.width;
         this.position.x = Math.floor(Math.random() * (this.game.canvas.width - (3 * this.width)));
         this.position.y = Math.floor(Math.random() * (this.game.canvas.height - (3 * this.height)));
 
@@ -23,6 +22,7 @@ const ennemi = {
 
     update(){
         this.renderEllipseEnnemi();
+        this.collisionCircle();
         if (this.position.y + this.height > this.game.canvas.height || this.position.y -this.height  < 0){
             this.speed.y = -this.speed.y
         }
@@ -37,12 +37,28 @@ const ennemi = {
 
 
     },
+
     renderEllipseEnnemi(){
         this.game.ctx.fillStyle = "red";
         this.game.ctx.beginPath();
         this.game.ctx.ellipse(this.position.x, this.position.y, this.width, this.height, 0, 0, Math.PI * 2/*tout le cercle math.pi = demi cercle *2 = entier*/, false);
         this.game.ctx.fill();
     },
+
+    collisionCircle(){
+        let circle1 = {radius: circle.width, x: circle.x, y: circle.y};
+        let circle2 = {radius: this.width, x: this.position.x, y: this.position.y};
+
+        let dx = circle1.x - circle2.x;
+        let dy = circle1.y - circle2.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < circle1.radius + circle2.radius) {
+
+            this.game.cancelAnimation();
+        }
+
+    }
 
 
 }

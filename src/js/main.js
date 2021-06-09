@@ -6,6 +6,7 @@ const game={
     ctx: null,
     squares:[],
     squaresCount:7,
+    requestId: 0,
     init(){
         this.ctx = this.canvas.getContext('2d');
         circle.init(this);
@@ -18,7 +19,7 @@ const game={
     },
 
     animate(){
-        window.requestAnimationFrame(()=>{
+        this.requestId = window.requestAnimationFrame(()=>{
             this.animate();
         })
 
@@ -31,6 +32,10 @@ const game={
         })
         ennemi.update();
     },
+
+    cancelAnimation(){
+        window.cancelAnimationFrame(this.requestId);
+    }
 
 }
 game.init();
