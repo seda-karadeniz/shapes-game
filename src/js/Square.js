@@ -16,8 +16,6 @@ export default class Square{
     }
     draw(){
 
-
-
         this.game.ctx.beginPath();
         this.game.ctx.rect(this.position.x, this.position.y, this.width, this.height);
         this.game.ctx.fill();
@@ -25,7 +23,6 @@ export default class Square{
     update(){
         this.draw();
         if (this.collisionCircle()){
-            //todo : supprimer le rectangle
             delete this.position.x;
             delete this.position.y;
         }
@@ -64,7 +61,7 @@ export default class Square{
         let distance = Math.sqrt( (distX*distX) + (distY*distY) );
 
         // if the distance is less than the radius, collision!
-        if (distance <= circle.width/2) {
+        if (distance <= circle.width) {
             return true;
         }
         return false;
