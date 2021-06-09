@@ -1,5 +1,6 @@
 import circle from './circle';
 import Square from "./Square";
+import ennemi from "./ennemi";
 const game={
     canvas : document.getElementById('game'),
     ctx: null,
@@ -12,6 +13,7 @@ const game={
             this.squares.push(new Square(this));
 
         }
+        ennemi.init(this);
         this.animate();
     },
 
@@ -27,6 +29,7 @@ const game={
 
 
         })
+        ennemi.update();
     },
 
 }
