@@ -30,10 +30,10 @@ export default class Square{
             delete this.position.y;
         }
 
-        if (this.position.y > this.game.canvas.height || this.position.y < 0){
+        if (this.position.y + this.height > this.game.canvas.height || this.position.y < 0){
             this.speed.y = -this.speed.y
         }
-        if (this.position.x > this.game.canvas.width || this.position.x < 0){
+        if (this.position.x + this.width > this.game.canvas.width || this.position.x  < 0){
             this.speed.x = -this.speed.x
         }
 
