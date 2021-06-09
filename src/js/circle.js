@@ -1,6 +1,7 @@
+import Square from "./Square";
 const circle = {
     game: null,
-    x: 0,
+    x: 20,
     y:20,
     width: 20,
     height: 20,
@@ -14,6 +15,7 @@ const circle = {
 
     update(){
        this.renderEllipse();
+       //this.collisionSquare();
        window.addEventListener('keydown', (e)=>{
 
            if (e.key === 'ArrowRight'){
@@ -58,10 +60,12 @@ const circle = {
 
     },
     renderEllipse() {
-    this.game.ctx.fillStyle = "black";
-    this.game.ctx.beginPath();
-    this.game.ctx.ellipse(this.x, this.y, this.width, this.height, 0, 0, Math.PI * 2/*tout le cercle math.pi = demi cercle *2 = entier*/, false);
-    this.game.ctx.fill();
-    }
+        this.game.ctx.fillStyle = "black";
+        this.game.ctx.beginPath();
+        this.game.ctx.ellipse(this.x, this.y, this.width, this.height, 0, 0, Math.PI * 2/*tout le cercle math.pi = demi cercle *2 = entier*/, false);
+        this.game.ctx.fill();
+    },
+
+
 }
 export default circle;
