@@ -10,6 +10,7 @@ const game={
         circle.init(this);
         for (let i = 0; i < this.squaresCount; i++){
             this.squares.push(new Square(this));
+
         }
         this.animate();
     },
@@ -23,6 +24,7 @@ const game={
         circle.update();
         this.squares.forEach(square=>{
             square.update();
+
 
         })
     },

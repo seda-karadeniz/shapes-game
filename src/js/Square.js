@@ -15,6 +15,9 @@ export default class Square{
 
     }
     draw(){
+
+
+
         this.game.ctx.beginPath();
         this.game.ctx.rect(this.position.x, this.position.y, this.width, this.height);
         this.game.ctx.fill();
@@ -22,7 +25,9 @@ export default class Square{
     update(){
         this.draw();
         if (this.collisionCircle()){
-            console.log('oui')
+            //todo : supprimer le rectangle
+            delete this.position.x;
+            delete this.position.y;
         }
 
         if (this.position.y > this.game.canvas.height || this.position.y < 0){
